@@ -4,9 +4,7 @@ import {getAllPokemons} from '../pokemonsModel.js'
 import {
     getAllPokemons,
     getPokemonById,
-    createPokemon,
-    updatePokemon,
-    deletePokemon
+
 } from '../models/pokemonModule.js';
 
 

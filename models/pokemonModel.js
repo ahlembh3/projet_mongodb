@@ -105,7 +105,10 @@ export async function findTopFrenchNameLength(limit) {
 	}
 
 	return result;
+
+
 }
+
 
 
 export async function getPokemonById(id) {

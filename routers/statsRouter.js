@@ -1,15 +1,9 @@
 import express from 'express';
+import {getAverage, getTypes} from '../controllers/statsController.js';
 
+const routerStats = express.Router();
 
-const router = express.Router();
+routerStats.get('/hp/average', getAverage );
+routerStats.get('/types/top', getTypes)
 
-router.post('/', );
-
-
-router.get('/', );
-
-router.put('/:id', );
-
-router.delete('/:id', );
-
-export default router;
+export default routerStats;

@@ -33,3 +33,71 @@ weightKg: -1 } }, { $limit: 20 }, { $project: { _id: 0, id: 1, "name": 1,
 
     return pokemons;
 }
+
+ export async function moyenneHP() {
+    let mongoClient;
+    let moyennePokemon = [];
+    try {
+        mongoClient = await connectToMongoDB(process.env.DB_URI);
+        const m2iDb = mongoClient.db('m2i');
+        const pokemons = m2iDb.collection('pokemon');
+
+        moyennePokemon = await pokemons.aggregate([
+            {
+                $group: {
+                    _id: null,
+                    moyenneHP: { $avg: "$base.HP" }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    moyenneHP: { $round: ["$moyenneHP", 2] }
+                }
+            }
+        ]).toArray();
+
+    } catch (error) {
+        console.log(error);
+    } finally {
+        await mongoClient?.close();
+    }
+
+    return moyennePokemon[0];
+}
+
+// Types les plus fréquents
+export async function typesPlusFrequent() {
+    let mongoClient;
+    let types = [];
+    try {
+        mongoClient = await connectToMongoDB(process.env.DB_URI);
+        const m2iDb = mongoClient.db('m2i');
+        const pokemons = m2iDb.collection('pokemon');
+
+        types = await pokemons.aggregate([
+            {
+                $unwind: "$type"
+            },
+            {
+                $group: {
+                    _id: "$type",
+                    count: { $sum: 1 }
+                }
+            },
+            {
+                $sort: { count: -1 }
+            },
+            {
+                $limit: 10
+            }
+        ]).toArray();
+
+    } catch (error) {
+        console.log(error);
+    } finally {
+        await mongoClient?.close();
+    }
+
+    return types;
+}

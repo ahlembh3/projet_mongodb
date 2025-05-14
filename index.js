@@ -4,6 +4,7 @@ import express from 'express';
 
 import filmsRouter from './routers/filmsRouter.js';
 import pokemonsRouter from './routers/pokemonsRouter.js';
+import statsRouter from "./routers/statsRouter.js";
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 
 app.use('/films', filmsRouter);
 app.use('/pokemons', pokemonsRouter);
+app.use('/stats', statsRouter);
 
 
 app.get('/salut', (req, res) => res.send('coucou'));
@@ -25,6 +27,6 @@ app.use((req, res) => {
 	res.json({ message: 'page 404' });
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT,'0.0.0.0', () => {
 	console.log(`serveur lancé sur le port ${process.env.PORT}`);
 });

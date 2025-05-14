@@ -1,4 +1,5 @@
 import express from 'express';
+import {getAllPokemons} from '..models/pokemonModule.js'
 
 
 const router = express.Router();
@@ -6,7 +7,7 @@ const router = express.Router();
 router.post('/',);
 
 
-router.get('/', );
+router.get('/', getAllPokemons);
 
 router.put('/:id', );
 

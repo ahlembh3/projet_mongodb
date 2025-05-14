@@ -1,16 +1,21 @@
 import express from 'express';
-import {getAllPokemons} from '..models/pokemonModule.js'
+import {getAllPokemons} from '../pokemonsModel.js'
+
+import {
+    getAllPokemons,
+    getPokemonById,
+    createPokemon,
+    updatePokemon,
+    deletePokemon
+} from '../models/pokemonModule.js';
 
 
-const router = express.Router();
 
-router.post('/',);
-
-
+// Récupérer tous les pokémons
 router.get('/', getAllPokemons);
 
-router.put('/:id', );
+// Récupérer un pokémon par ID
+router.get('/:id', getPokemonById);
 
-router.delete('/:id', );
 
 export default router;

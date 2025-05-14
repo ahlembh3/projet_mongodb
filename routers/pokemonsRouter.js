@@ -1,15 +1,16 @@
 import express from 'express';
-
+import {
+getPokemons,
+getOnePokemon
+} from '../controllers/pokemonController.js';
 
 const router = express.Router();
 
-router.post('/',);
 
+router.get('/', getPokemons);
 
-router.get('/', );
+// Récupérer un pokémon par ID
+router.get('/:id', getOnePokemon);
 
-router.put('/:id', );
-
-router.delete('/:id', );
 
 export default router;

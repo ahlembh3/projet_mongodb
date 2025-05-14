@@ -2,8 +2,7 @@ import {
     findAllPokemons,
     findPokemonById,
     insertPokemon,
-    updatePokemonById,
-    deletePokemonById
+   
 } from '../models/pokemonModel.js';
 
 export async function getAllPokemons(req, res) {

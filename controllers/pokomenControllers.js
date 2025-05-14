@@ -17,7 +17,7 @@ export async function getPokemons(req, res) {
 export async function getOnePokemon(req, res) {
     try {
         const id = parseInt(req.params.id);
-        const pokemon = await findPokemonById(id);
+        const pokemon = await getPokemonById(id);
         if (!pokemon)
             return res.status(404).json({ message: 'Pokemon non trouvé' });
         res.status(200).json(pokemon);

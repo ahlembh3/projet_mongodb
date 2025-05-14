@@ -4,7 +4,7 @@ import {
 	getOneMovieById,
 	getOneMoviePage,
 	deleteOneMovieById,
-} from '../controllers/filmsController.js';
+} from '../models/pokemonsModel.js';
 
 const router = express.Router();
 

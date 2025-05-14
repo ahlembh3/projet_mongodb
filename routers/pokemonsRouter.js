@@ -25,7 +25,7 @@ router.get('/top-height', getTopHeight);
 router.get('/without-evolution', getPokemonsWithoutEvolution);
 
 
-// Requête : /pokemons/min-type?minTypes=2
+// Requête : /pokemons/min-types?minTypes=2
 router.get('/min-types', getPokemonsType);
 
 // Requête : /pokemons/search?startsWith=Z&type=Dragon
@@ -35,6 +35,6 @@ router.get('/search', getFilteredPokemons);
 router.get('/french-name-length', getTopFrenchNameLength);
 
 // Récupérer un pokémon par ID
-router.get('/:id', getOnePokemon);
+ router.get('/:id', getOnePokemon);
 
 export default router;
